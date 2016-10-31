@@ -26,7 +26,10 @@
                 ActiveSerialPort.PortName = portName
                 ActiveSerialPort.Open()
                 If ActiveSerialPort.IsOpen Then
+
+                    StatusTextBox.Text = "Connected"
                     MsgBox("Success!")
+
                 End If
             Catch uAccEx As UnauthorizedAccessException
                 ' Serial Port is already open by a different process.
@@ -52,5 +55,12 @@
         For Each sp As String In My.Computer.Ports.SerialPortNames
             PortsListBox.Items.Add(sp)
         Next
+    End Sub
+
+    Private Sub CloseButton_Click(sender As Object, e As EventArgs) Handles CloseButton.Click
+        ActiveSerialPort.Close()
+        If Not ActiveSerialPort.IsOpen Then
+            StatusTextBox.Text = "Not Connected"
+        End If
     End Sub
 End Class

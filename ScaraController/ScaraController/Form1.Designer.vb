@@ -29,6 +29,7 @@ Partial Class Form1
         Me.StatusTextBox = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.RefreshButton = New System.Windows.Forms.Button()
+        Me.CloseButton = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'ActiveSerialPort
@@ -47,9 +48,9 @@ Partial Class Form1
         '
         Me.ConnectButton.Location = New System.Drawing.Point(46, 248)
         Me.ConnectButton.Name = "ConnectButton"
-        Me.ConnectButton.Size = New System.Drawing.Size(197, 24)
+        Me.ConnectButton.Size = New System.Drawing.Size(96, 24)
         Me.ConnectButton.TabIndex = 1
-        Me.ConnectButton.Text = "Attempt Connection"
+        Me.ConnectButton.Text = "Connect"
         Me.ConnectButton.UseVisualStyleBackColor = True
         '
         'StatusTextBox
@@ -79,11 +80,21 @@ Partial Class Form1
         Me.RefreshButton.Text = "Refresh"
         Me.RefreshButton.UseVisualStyleBackColor = True
         '
+        'CloseButton
+        '
+        Me.CloseButton.Location = New System.Drawing.Point(148, 250)
+        Me.CloseButton.Name = "CloseButton"
+        Me.CloseButton.Size = New System.Drawing.Size(94, 22)
+        Me.CloseButton.TabIndex = 5
+        Me.CloseButton.Text = "Close"
+        Me.CloseButton.UseVisualStyleBackColor = True
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(808, 399)
+        Me.Controls.Add(Me.CloseButton)
         Me.Controls.Add(Me.RefreshButton)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.StatusTextBox)
@@ -102,4 +113,5 @@ Partial Class Form1
     Friend WithEvents StatusTextBox As TextBox
     Friend WithEvents Label1 As Label
     Friend WithEvents RefreshButton As Button
+    Friend WithEvents CloseButton As Button
 End Class
