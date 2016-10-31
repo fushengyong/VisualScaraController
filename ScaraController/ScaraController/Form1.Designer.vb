@@ -28,6 +28,7 @@ Partial Class Form1
         Me.ConnectButton = New System.Windows.Forms.Button()
         Me.StatusTextBox = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.RefreshButton = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'ActiveSerialPort
@@ -58,6 +59,7 @@ Partial Class Form1
         Me.StatusTextBox.ReadOnly = True
         Me.StatusTextBox.Size = New System.Drawing.Size(141, 20)
         Me.StatusTextBox.TabIndex = 2
+        Me.StatusTextBox.Text = "Not Connected"
         '
         'Label1
         '
@@ -68,11 +70,21 @@ Partial Class Form1
         Me.Label1.TabIndex = 3
         Me.Label1.Text = "Status:"
         '
+        'RefreshButton
+        '
+        Me.RefreshButton.Location = New System.Drawing.Point(48, 280)
+        Me.RefreshButton.Name = "RefreshButton"
+        Me.RefreshButton.Size = New System.Drawing.Size(194, 22)
+        Me.RefreshButton.TabIndex = 4
+        Me.RefreshButton.Text = "Refresh"
+        Me.RefreshButton.UseVisualStyleBackColor = True
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(858, 399)
+        Me.ClientSize = New System.Drawing.Size(808, 399)
+        Me.Controls.Add(Me.RefreshButton)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.StatusTextBox)
         Me.Controls.Add(Me.ConnectButton)
@@ -89,4 +101,5 @@ Partial Class Form1
     Friend WithEvents ConnectButton As Button
     Friend WithEvents StatusTextBox As TextBox
     Friend WithEvents Label1 As Label
+    Friend WithEvents RefreshButton As Button
 End Class
