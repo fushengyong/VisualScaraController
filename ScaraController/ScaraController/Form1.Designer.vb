@@ -30,6 +30,9 @@ Partial Class Form1
         Me.Label1 = New System.Windows.Forms.Label()
         Me.RefreshButton = New System.Windows.Forms.Button()
         Me.CloseButton = New System.Windows.Forms.Button()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.BackgroundWorker1 = New System.ComponentModel.BackgroundWorker()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'ActiveSerialPort
@@ -89,11 +92,23 @@ Partial Class Form1
         Me.CloseButton.Text = "Close"
         Me.CloseButton.UseVisualStyleBackColor = True
         '
+        'PictureBox1
+        '
+        Me.PictureBox1.Location = New System.Drawing.Point(340, 12)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(400, 400)
+        Me.PictureBox1.TabIndex = 6
+        Me.PictureBox1.TabStop = False
+        '
+        'BackgroundWorker1
+        '
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(808, 399)
+        Me.ClientSize = New System.Drawing.Size(808, 419)
+        Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.CloseButton)
         Me.Controls.Add(Me.RefreshButton)
         Me.Controls.Add(Me.Label1)
@@ -102,6 +117,7 @@ Partial Class Form1
         Me.Controls.Add(Me.PortsListBox)
         Me.Name = "Form1"
         Me.Text = "Form1"
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -114,4 +130,6 @@ Partial Class Form1
     Friend WithEvents Label1 As Label
     Friend WithEvents RefreshButton As Button
     Friend WithEvents CloseButton As Button
+    Friend WithEvents PictureBox1 As PictureBox
+    Friend WithEvents BackgroundWorker1 As System.ComponentModel.BackgroundWorker
 End Class

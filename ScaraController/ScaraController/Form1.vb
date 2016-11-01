@@ -1,4 +1,17 @@
 ﻿Public Class Form1
+    Dim robot As Arm
+    Dim draw As System.Drawing.Graphics
+
+    Structure Arm
+        Dim segments() As Segment
+    End Structure
+
+    Structure Segment
+        Dim length As Single
+        Dim originPos As Point
+        Dim angle As Double
+    End Structure
+
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         For Each sp As String In My.Computer.Ports.SerialPortNames
             PortsListBox.Items.Add(sp)
@@ -62,5 +75,17 @@
         If Not ActiveSerialPort.IsOpen Then
             StatusTextBox.Text = "Not Connected"
         End If
+    End Sub
+
+    Private Sub BackgroundWorker1_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles BackgroundWorker1.DoWork
+
+    End Sub
+
+    Private Sub PictureBox1_Click(sender As Object, e As EventArgs) Handles PictureBox1.Click
+
+    End Sub
+
+    Private Sub PictureBox1_MouseDown(sender As Object, e As MouseEventArgs) Handles PictureBox1.MouseDown
+
     End Sub
 End Class
