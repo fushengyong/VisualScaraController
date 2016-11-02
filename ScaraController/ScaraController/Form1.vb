@@ -51,7 +51,8 @@ Public Class Form1
             baseRectSize.Width = 5
             baseRect.Size = baseRectSize
 
-            Form1.formGraphics.DrawEllipse(Form1.pen, baseRect)
+            Dim g As Graphics = Form1.PictureBox1.CreateGraphics()
+            g.DrawEllipse(Form1.pen, baseRect)
         End Sub
     End Structure
 
