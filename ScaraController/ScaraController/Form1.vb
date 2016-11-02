@@ -16,10 +16,11 @@
 
 Public Class Form1
     Dim robot As Arm
-    Dim draw As System.Drawing.Graphics
+    Dim formGraphics As System.Drawing.Graphics
+    Dim pen As System.Drawing.Pen
 
     Structure Arm
-        Dim segments() As Segment
+        Dim segments As List(Of Segment)
     End Structure
 
     Structure Segment
@@ -27,6 +28,7 @@ Public Class Form1
         Dim originPos As Point
         Dim angle As Double
         Dim endPos As Point
+        Dim priority As UInt16 ' the first segment has a priority of 0, the next is 1, etc.
 
         Sub setOriginPos(x As Single, y As Single)
             Me.originPos.X = x
@@ -36,6 +38,20 @@ Public Class Form1
         Sub move(angle As Double)
             ' math needed
 
+        End Sub
+
+        Sub draw()
+            Dim baseRect As Rectangle
+            Dim baseRectPos As Point
+            baseRectPos.X = Me.originPos.X - 2.5
+            baseRectPos.Y = Me.originPos.Y - 2.5
+            baseRect.Location = baseRectPos
+            Dim baseRectSize As System.Drawing.Size
+            baseRectSize.Height = 5
+            baseRectSize.Width = 5
+            baseRect.Size = baseRectSize
+
+            Form1.formGraphics.DrawEllipse(Form1.pen, baseRect)
         End Sub
     End Structure
 
@@ -104,9 +120,6 @@ Public Class Form1
         End If
     End Sub
 
-    Private Sub BackgroundWorker1_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) 
-
-    End Sub
 
     Private Sub PictureBox1_Click(sender As Object, e As EventArgs) Handles PictureBox1.Click
 

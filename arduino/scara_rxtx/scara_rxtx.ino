@@ -39,6 +39,7 @@ void loop() {
   if(Serial.available()){
     String str = Serial.readString();
     if(str == "test    "){
+      // send back confirmation?
       for (int j = 0; j < 1000; j++){
         digitalWrite(13,HIGH);
         delay(100);
