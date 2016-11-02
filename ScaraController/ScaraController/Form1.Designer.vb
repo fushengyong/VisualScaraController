@@ -32,6 +32,7 @@ Partial Class Form1
         Me.CloseButton = New System.Windows.Forms.Button()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.BackgroundWorker1 = New System.ComponentModel.BackgroundWorker()
+        Me.SendTestButton = New System.Windows.Forms.Button()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -103,11 +104,21 @@ Partial Class Form1
         'BackgroundWorker1
         '
         '
+        'SendTestButton
+        '
+        Me.SendTestButton.Location = New System.Drawing.Point(46, 308)
+        Me.SendTestButton.Name = "SendTestButton"
+        Me.SendTestButton.Size = New System.Drawing.Size(196, 20)
+        Me.SendTestButton.TabIndex = 7
+        Me.SendTestButton.Text = "Send Test"
+        Me.SendTestButton.UseVisualStyleBackColor = True
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(808, 419)
+        Me.Controls.Add(Me.SendTestButton)
         Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.CloseButton)
         Me.Controls.Add(Me.RefreshButton)
@@ -132,4 +143,5 @@ Partial Class Form1
     Friend WithEvents CloseButton As Button
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents BackgroundWorker1 As System.ComponentModel.BackgroundWorker
+    Friend WithEvents SendTestButton As Button
 End Class

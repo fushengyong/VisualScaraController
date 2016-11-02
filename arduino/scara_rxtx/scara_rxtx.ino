@@ -35,5 +35,10 @@ void setup() {
 
 void loop() {
   // put your main code here, to run repeatedly:
-
+  if(Serial.available() > 0){
+    String input = Serial.readString()
+    if(input.equals("test")){
+      // do something
+    }
+  }
 }

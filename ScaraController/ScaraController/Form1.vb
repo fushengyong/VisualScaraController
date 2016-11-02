@@ -26,6 +26,17 @@ Public Class Form1
         Dim length As Single
         Dim originPos As Point
         Dim angle As Double
+        Dim endPos As Point
+
+        Sub setOriginPos(x As Single, y As Single)
+            Me.originPos.X = x
+            Me.originPos.Y = y
+        End Sub
+
+        Sub move(angle As Double)
+            ' math needed
+
+        End Sub
     End Structure
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -103,5 +114,11 @@ Public Class Form1
 
     Private Sub PictureBox1_MouseDown(sender As Object, e As MouseEventArgs) Handles PictureBox1.MouseDown
 
+    End Sub
+
+    Private Sub SendTestButton_Click(sender As Object, e As EventArgs) Handles SendTestButton.Click
+        If ActiveSerialPort.IsOpen() Then
+            ActiveSerialPort.Write("test") ' should match test string on arduino side
+        End If
     End Sub
 End Class
