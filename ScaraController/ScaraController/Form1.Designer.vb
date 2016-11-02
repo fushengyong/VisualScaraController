@@ -31,7 +31,6 @@ Partial Class Form1
         Me.RefreshButton = New System.Windows.Forms.Button()
         Me.CloseButton = New System.Windows.Forms.Button()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
-        Me.BackgroundWorker1 = New System.ComponentModel.BackgroundWorker()
         Me.SendTestButton = New System.Windows.Forms.Button()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -101,9 +100,6 @@ Partial Class Form1
         Me.PictureBox1.TabIndex = 6
         Me.PictureBox1.TabStop = False
         '
-        'BackgroundWorker1
-        '
-        '
         'SendTestButton
         '
         Me.SendTestButton.Location = New System.Drawing.Point(46, 308)
@@ -142,6 +138,5 @@ Partial Class Form1
     Friend WithEvents RefreshButton As Button
     Friend WithEvents CloseButton As Button
     Friend WithEvents PictureBox1 As PictureBox
-    Friend WithEvents BackgroundWorker1 As System.ComponentModel.BackgroundWorker
     Friend WithEvents SendTestButton As Button
 End Class

@@ -31,14 +31,21 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(9600);
+  pinMode(13,OUTPUT);
 }
 
 void loop() {
   // put your main code here, to run repeatedly:
-  if(Serial.available() > 0){
-    String input = Serial.readString()
-    if(input.equals("test")){
-      // do something
+  if(Serial.available()){
+    String str = Serial.readString();
+    if(str == "test    "){
+      for (int j = 0; j < 1000; j++){
+        digitalWrite(13,HIGH);
+        delay(100);
+        digitalWrite(13,LOW);
+        delay(100);
+      }
     }
   }
+  
 }

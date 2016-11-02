@@ -104,7 +104,7 @@ Public Class Form1
         End If
     End Sub
 
-    Private Sub BackgroundWorker1_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles BackgroundWorker1.DoWork
+    Private Sub BackgroundWorker1_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) 
 
     End Sub
 
@@ -118,7 +118,7 @@ Public Class Form1
 
     Private Sub SendTestButton_Click(sender As Object, e As EventArgs) Handles SendTestButton.Click
         If ActiveSerialPort.IsOpen() Then
-            ActiveSerialPort.Write("test")  ' should match test string on arduino side
+            ActiveSerialPort.Write("test    ")  ' should match test string on arduino side
         End If
     End Sub
 End Class
