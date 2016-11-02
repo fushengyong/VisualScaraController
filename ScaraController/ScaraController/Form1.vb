@@ -1,4 +1,4 @@
-﻿'Copyright (C) 2016 Wei Gao
+﻿'Copyright (C) 2016 Wei Gao, Dival Banerjee
 '
 'This program is free software; you can redistribute it and/or
 'modify it under the terms of the GNU General Public License
@@ -118,7 +118,7 @@ Public Class Form1
 
     Private Sub SendTestButton_Click(sender As Object, e As EventArgs) Handles SendTestButton.Click
         If ActiveSerialPort.IsOpen() Then
-            ActiveSerialPort.Write("test") ' should match test string on arduino side
+            ActiveSerialPort.Write("test")  ' should match test string on arduino side
         End If
     End Sub
 End Class

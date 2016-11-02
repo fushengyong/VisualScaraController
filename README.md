@@ -13,7 +13,7 @@ The Visual Basic.NET code should already be setup.
 We recommend setting the directory arduino/ as a sketchbook.
 
 ## License
-Copyright (C) 2016 Wei Gao
+Copyright (C) 2016 Wei Gao, Dival Banerjee
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
