@@ -1,9 +1,12 @@
 #include <LiquidCrystal.h>
-LiquidCrystal lcd(4,5,6,7,8,9,10,11,12,13);
+
+// TODO: update with new hardware pin settings
+LiquidCrystal lcd(41,39,23,25,27,29,31,33,35,37);
 void setup() {
   // put your setup code here, to run once:
+  //lcd.autoscroll();
   Serial.begin(9600);
-  lcd.begin(16,2);
+  lcd.begin(16, 2);
   lcd.print("hello world!");
   delay(3000);
   lcd.clear();
