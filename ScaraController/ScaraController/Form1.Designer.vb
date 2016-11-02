@@ -49,7 +49,7 @@ Partial Class Form1
         '
         'ConnectButton
         '
-        Me.ConnectButton.Location = New System.Drawing.Point(46, 248)
+        Me.ConnectButton.Location = New System.Drawing.Point(46, 272)
         Me.ConnectButton.Name = "ConnectButton"
         Me.ConnectButton.Size = New System.Drawing.Size(96, 24)
         Me.ConnectButton.TabIndex = 1
@@ -58,7 +58,7 @@ Partial Class Form1
         '
         'StatusTextBox
         '
-        Me.StatusTextBox.Location = New System.Drawing.Point(102, 222)
+        Me.StatusTextBox.Location = New System.Drawing.Point(102, 246)
         Me.StatusTextBox.Name = "StatusTextBox"
         Me.StatusTextBox.ReadOnly = True
         Me.StatusTextBox.Size = New System.Drawing.Size(141, 20)
@@ -68,7 +68,7 @@ Partial Class Form1
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(56, 225)
+        Me.Label1.Location = New System.Drawing.Point(56, 249)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(40, 13)
         Me.Label1.TabIndex = 3
@@ -76,25 +76,27 @@ Partial Class Form1
         '
         'RefreshButton
         '
-        Me.RefreshButton.Location = New System.Drawing.Point(48, 280)
+        Me.RefreshButton.Location = New System.Drawing.Point(46, 218)
         Me.RefreshButton.Name = "RefreshButton"
-        Me.RefreshButton.Size = New System.Drawing.Size(194, 22)
+        Me.RefreshButton.Size = New System.Drawing.Size(198, 22)
         Me.RefreshButton.TabIndex = 4
         Me.RefreshButton.Text = "Refresh"
         Me.RefreshButton.UseVisualStyleBackColor = True
         '
         'CloseButton
         '
-        Me.CloseButton.Location = New System.Drawing.Point(148, 250)
+        Me.CloseButton.Location = New System.Drawing.Point(148, 274)
         Me.CloseButton.Name = "CloseButton"
         Me.CloseButton.Size = New System.Drawing.Size(94, 22)
         Me.CloseButton.TabIndex = 5
-        Me.CloseButton.Text = "Close"
+        Me.CloseButton.Text = "Disconnect"
         Me.CloseButton.UseVisualStyleBackColor = True
         '
         'PictureBox1
         '
-        Me.PictureBox1.Location = New System.Drawing.Point(250, 7)
+        Me.PictureBox1.BackColor = System.Drawing.Color.White
+        Me.PictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.PictureBox1.Location = New System.Drawing.Point(266, 7)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(400, 400)
         Me.PictureBox1.TabIndex = 6
@@ -102,7 +104,7 @@ Partial Class Form1
         '
         'SendTestButton
         '
-        Me.SendTestButton.Location = New System.Drawing.Point(46, 308)
+        Me.SendTestButton.Location = New System.Drawing.Point(46, 302)
         Me.SendTestButton.Name = "SendTestButton"
         Me.SendTestButton.Size = New System.Drawing.Size(196, 20)
         Me.SendTestButton.TabIndex = 7
