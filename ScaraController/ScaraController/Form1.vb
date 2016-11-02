@@ -60,6 +60,7 @@ Public Class Form1
         For Each sp As String In My.Computer.Ports.SerialPortNames
             PortsListBox.Items.Add(sp)
         Next
+
     End Sub
 
     Private Sub TransmitString(str As String)
@@ -132,7 +133,7 @@ Public Class Form1
 
     Private Sub SendTestButton_Click(sender As Object, e As EventArgs) Handles SendTestButton.Click
         If ActiveSerialPort.IsOpen() Then
-            ActiveSerialPort.Write("test    ")  ' should match test string on arduino side
+            ActiveSerialPort.Write("Hello from VB!")  ' should match test string on arduino side
         End If
     End Sub
 End Class
