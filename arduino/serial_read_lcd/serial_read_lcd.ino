@@ -21,6 +21,9 @@ void loop() {
     // clear the screen
     lcd.clear();
     // read all the available characters
-    lcd.print(Serial.readString());
+    String str = Serial.readString();
+    lcd.print(str);
+    Serial.println(str);
+    
   }
 }
