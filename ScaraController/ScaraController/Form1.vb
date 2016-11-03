@@ -100,7 +100,7 @@ Public Class Form1
                 MsgBox("The port is not supported or does not begin with 'COM'.", MsgBoxStyle.Exclamation, "Port not supported")
             Catch ioEx As System.IO.IOException
                 ' something goofed while working with the port
-                MsgBox("Something went wrong while opening the port.", MsgBoxStyle.Exclamation, "Error - dun goofed")
+                MsgBox("Something went wrong while opening the port. Check your connection to the device.", MsgBoxStyle.Exclamation, "Disconnected")
             Catch InvOpEx As InvalidOperationException
                 ' The port was already opened by this process.
                 MsgBox("That port is already open here.", MsgBoxStyle.Exclamation, "Already open")
@@ -134,6 +134,8 @@ Public Class Form1
     Private Sub SendTestButton_Click(sender As Object, e As EventArgs) Handles SendTestButton.Click
         If ActiveSerialPort.IsOpen() Then
             ActiveSerialPort.Write("Hello from VB!")  ' should match test string on arduino side
+        Else
+            MsgBox("The device port is closed. Check your connection and reconnect if necessary.", MsgBoxStyle.Exclamation, "Port closed")
         End If
     End Sub
 End Class

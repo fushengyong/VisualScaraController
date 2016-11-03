@@ -125,6 +125,7 @@ Partial Class Form1
         Me.Controls.Add(Me.ConnectButton)
         Me.Controls.Add(Me.PortsListBox)
         Me.Name = "Form1"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Form1"
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
