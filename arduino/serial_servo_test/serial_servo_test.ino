@@ -4,11 +4,13 @@
 
 LiquidCrystal lcd(41,39,23,25,27,29,31,33,35,37);
 Servo servo;
+int servo_min = 620;
+int servo_max = 2310;
 
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(9600);
-  servo.attach(13,700,2200);
+  servo.attach(13,servo_min,servo_max);
   lcd.begin(16, 2);
   lcd.print("hello world!");
   delay(3000);
@@ -25,8 +27,8 @@ void loop() {
     lcd.print("Enter a value:");
     lcd.setCursor(0,1);
     int val = Serial.parseInt();
-    if(val > 2200) val = 2200;
-    if(val < 700) val = 700;
+    if(val > servo_max) val = servo_max;
+    if(val < servo_min) val = servo_min;
     lcd.print(val);
     servo.write(val);
   }
