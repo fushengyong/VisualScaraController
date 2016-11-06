@@ -4,8 +4,8 @@
 
 LiquidCrystal lcd(41,39,23,25,27,29,31,33,35,37);
 Servo servo;
-int servo_min = 620;
-int servo_max = 2310;
+int servo_min = 560;
+int servo_max = 2405 ;
 
 void setup() {
   // put your setup code here, to run once:
