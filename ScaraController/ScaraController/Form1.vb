@@ -15,6 +15,49 @@
 'Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 Public Class Form1
+
+    Structure Robot
+        Dim seg1 As Segment
+        Dim seg2 As Segment
+
+        Sub MoveTo(x As Integer, y As Integer)
+            ' I N V E R S E K I N E M A T I C S S S S S S
+
+
+        End Sub
+    End Structure
+
+    Structure Segment
+        Dim origin As Point
+        Dim [end] As Point
+        Dim length As Single
+        Dim angle As Double
+
+        Sub setOrigin(x As Integer, y As Integer)
+            origin = New Point(x, y)
+        End Sub
+
+        Sub setLength(scaleLen As Single)
+            length = scaleLen
+        End Sub
+
+        Sub moveTo(angle As Double)
+            Me.angle = angle
+            RecalcPos()
+        End Sub
+
+        Sub RecalcPos()
+            [end] = New Point(origin.X + length * Math.Cos(angle), origin.Y + length * Math.Sin(angle))
+        End Sub
+
+        Sub Draw(g As Graphics, p As Pen)
+            g.DrawLine(p, origin, [end])
+        End Sub
+    End Structure
+
+    Dim seg1 As Segment
+    Dim seg2 As Segment
+
     Private Sub TransmitString(str As String)
         ' treat str as a "register" of bytes
         ' 
@@ -89,6 +132,8 @@ Public Class Form1
         For i As Integer = 1 To 5
             g.DrawEllipse(p, ScaleReal(75 / 2) - ScaleReal(i * 4), ScaleReal(75 / 3) - ScaleReal(i * 4), ScaleReal(i * 8), ScaleReal(i * 8))
         Next
+        p.Color = Color.Blue
+        seg1.Draw(g, p)
     End Sub
 
     Function ScaleReal(real As Single) As Integer
@@ -97,5 +142,22 @@ Public Class Form1
 
     Private Sub PictureBox1_Paint(sender As Object, e As PaintEventArgs) Handles PictureBox1.Paint
         Redraw(e.Graphics)
+    End Sub
+
+    Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        seg1.setOrigin(PictureBox1.Width / 2, PictureBox1.Height * 3 / 4)
+        seg1.setLength(ScaleReal(25))
+        seg1.RecalcPos()
+    End Sub
+
+    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
+        'seg1.moveTo(seg1.angle + Math.PI / 360)
+        PictureBox1.Refresh()
+    End Sub
+
+    Private Sub PictureBox1_MouseDown(sender As Object, e As MouseEventArgs) Handles PictureBox1.MouseDown
+        Dim angle As Double = Math.Atan2(e.Y - seg1.origin.Y, e.X - seg1.origin.X)
+        Console.WriteLine(angle)
+        seg1.moveTo(angle)
     End Sub
 End Class
