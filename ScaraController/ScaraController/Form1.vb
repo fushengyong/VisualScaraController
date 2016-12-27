@@ -21,9 +21,23 @@ Public Class Form1
         Dim seg2 As Segment
 
         Sub MoveTo(x As Integer, y As Integer)
+            Console.WriteLine("moving")
             ' I N V E R S E K I N E M A T I C S S S S S S
+            Dim seg1Angle As Double
+            Dim seg2Angle As Double
 
-
+            Dim theta As Double
+            ' nan = t r i g g e r e d
+            ' still need to figure out how to calculate theta correctly
+            theta = Math.Acos(Math.Sqrt((x - seg1.origin.X) ^ 2 + (y - seg1.origin.Y) ^ 2) / (2 * seg1.length))
+            seg1Angle = Math.Atan2(y - seg1.origin.Y, x - seg1.origin.X) - theta
+            seg2Angle = 2 * theta
+            Console.WriteLine(theta & " " & seg1Angle & " " & seg2Angle)
+            seg1.moveTo(seg1Angle)
+            seg2.setOrigin(seg1.origin.X, seg1.origin.Y)
+            seg2.moveTo(seg2Angle + seg1Angle)
+            seg1.RecalcPos()
+            seg2.RecalcPos()
         End Sub
     End Structure
 
@@ -57,6 +71,7 @@ Public Class Form1
 
     Dim seg1 As Segment
     Dim seg2 As Segment
+    Dim arm As Robot
 
     Private Sub TransmitString(str As String)
         ' treat str as a "register" of bytes
@@ -134,6 +149,7 @@ Public Class Form1
         Next
         p.Color = Color.Blue
         seg1.Draw(g, p)
+        seg2.Draw(g, p)
     End Sub
 
     Function ScaleReal(real As Single) As Integer
@@ -148,6 +164,11 @@ Public Class Form1
         seg1.setOrigin(PictureBox1.Width / 2, PictureBox1.Height * 3 / 4)
         seg1.setLength(ScaleReal(25))
         seg1.RecalcPos()
+        seg2.setOrigin(seg1.origin.X, seg1.origin.Y)
+        seg2.setLength(seg1.length)
+        seg2.RecalcPos()
+        arm.seg1 = seg1
+        arm.seg2 = seg2
     End Sub
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
@@ -158,6 +179,11 @@ Public Class Form1
     Private Sub PictureBox1_MouseDown(sender As Object, e As MouseEventArgs) Handles PictureBox1.MouseDown
         Dim angle As Double = Math.Atan2(e.Y - seg1.origin.Y, e.X - seg1.origin.X)
         Console.WriteLine(angle)
-        seg1.moveTo(angle)
+
+        arm.MoveTo(e.X - seg1.origin.X, e.Y - seg1.origin.Y)
+    End Sub
+
+    Private Sub PictureBox1_Click(sender As Object, e As EventArgs) Handles PictureBox1.Click
+
     End Sub
 End Class
