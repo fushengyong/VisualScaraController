@@ -15,54 +15,6 @@
 'Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 Public Class Form1
-    Dim robot As Arm
-    Dim formGraphics As System.Drawing.Graphics
-    Dim pen As System.Drawing.Pen
-
-    Structure Arm
-        Dim segments As List(Of Segment)
-    End Structure
-
-    Structure Segment
-        Dim length As Single
-        Dim originPos As Point
-        Dim angle As Double
-        Dim endPos As Point
-        Dim priority As UInt16 ' the first segment has a priority of 0, the next is 1, etc.
-
-        Sub setOriginPos(x As Single, y As Single)
-            Me.originPos.X = x
-            Me.originPos.Y = y
-        End Sub
-
-        Sub move(angle As Double)
-            ' math needed
-
-        End Sub
-
-        Sub draw()
-            Dim baseRect As Rectangle
-            Dim baseRectPos As Point
-            baseRectPos.X = Me.originPos.X - 2.5
-            baseRectPos.Y = Me.originPos.Y - 2.5
-            baseRect.Location = baseRectPos
-            Dim baseRectSize As System.Drawing.Size
-            baseRectSize.Height = 5
-            baseRectSize.Width = 5
-            baseRect.Size = baseRectSize
-
-            Dim g As Graphics = Form1.PictureBox1.CreateGraphics()
-            g.DrawEllipse(Form1.pen, baseRect)
-        End Sub
-    End Structure
-
-    Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        For Each sp As String In My.Computer.Ports.SerialPortNames
-            PortsListBox.Items.Add(sp)
-        Next
-
-    End Sub
-
     Private Sub TransmitString(str As String)
         ' treat str as a "register" of bytes
         ' 
@@ -94,7 +46,7 @@ Public Class Form1
                 MsgBox("That port is in use by another application.", MsgBoxStyle.Exclamation, "Port busy/access denied")
             Catch argOutOfRangeEx As ArgumentOutOfRangeException
                 ' Something is not configured correctly. (Parity, Data/Stop Bits, BaudRate, or timeout invalid)
-                MsgBox("The port is not configured correctly. Check the parity, data bits, stop bits, baud rate, or timeout.", MsgBoxStyle.Exclamation, "Misconfigured")
+                MsgBox("The port is not configured correctly. Check the parity, data bits, stop bits, baud rate, or timeout.", MsgBoxStyle.Exclamation, "Misconfigured Port")
             Catch argEx As ArgumentException ' more general than the one above, I guess
                 ' more general; port doesn't begin with COM or "file type of port not supported"
                 MsgBox("The port is not supported or does not begin with 'COM'.", MsgBoxStyle.Exclamation, "Port not supported")
@@ -122,20 +74,28 @@ Public Class Form1
         End If
     End Sub
 
-
-    Private Sub PictureBox1_Click(sender As Object, e As EventArgs) Handles PictureBox1.Click
-
-    End Sub
-
-    Private Sub PictureBox1_MouseDown(sender As Object, e As MouseEventArgs) Handles PictureBox1.MouseDown
-
-    End Sub
-
     Private Sub SendTestButton_Click(sender As Object, e As EventArgs) Handles SendTestButton.Click
         If ActiveSerialPort.IsOpen() Then
-            ActiveSerialPort.Write("Hello from VB!")  ' should match test string on arduino side
+            ActiveSerialPort.Write("VBTEST!")  ' write 8 chars to the stream, so that arduino can verify
         Else
             MsgBox("The device port is closed. Check your connection and reconnect if necessary.", MsgBoxStyle.Exclamation, "Port closed")
         End If
+    End Sub
+
+    Sub Redraw(g As Graphics)
+        'Dim g As Graphics = PictureBox1.CreateGraphics()
+        Dim p As New Pen(Color.Red, 1)
+        g.DrawRectangle(p, ScaleReal(25), ScaleReal(50), ScaleReal(25), ScaleReal(25))
+        For i As Integer = 1 To 5
+            g.DrawEllipse(p, ScaleReal(75 / 2) - ScaleReal(i * 4), ScaleReal(75 / 3) - ScaleReal(i * 4), ScaleReal(i * 8), ScaleReal(i * 8))
+        Next
+    End Sub
+
+    Function ScaleReal(real As Single) As Integer
+        Return real * PictureBox1.Width / 75
+    End Function
+
+    Private Sub PictureBox1_Paint(sender As Object, e As PaintEventArgs) Handles PictureBox1.Paint
+        Redraw(e.Graphics)
     End Sub
 End Class
